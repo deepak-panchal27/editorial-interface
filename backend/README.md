@@ -1,0 +1,194 @@
+# Editorial Interface Backend RESTful API
+
+## Description
+This project implements a RESTful API using Node.js, Express, and MongoDB for managing articles in an editorial interface.
+
+## Technologies Used
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Multer
+- Axios
+- Cheerio
+- Compression
+- CORS
+- Dotenv
+- Express-mongo-sanitize
+- Helmet
+- Multer
+- XSS-clean
+
+## Installation Steps
+
+Clone the repository:
+
+```bash
+git clone https://github.com/deepak-panchal27/editorial-interface.git
+cd backend
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Set the environment variables:
+
+```bash
+.env
+
+# open .env and modify the environment variables (if needed)
+```
+
+## Table of Contents
+
+- [Features](#features)
+- [Commands](#commands)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Error Handling](#error-handling)
+- [Validation](#validation)
+- [Custom Mongoose Plugins](#custom-mongoose-plugins)
+
+## Features
+
+- **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)
+- **Validation**: request data validation
+- **Error handling**: centralized error handling mechanism
+- **DB connection first and gracefull shutdown**: first mongoDB is connected and then express app is started. Also implemented gracefull shutdown of express app
+- **Image uploading**: image is uploaded to [Cloudinary](https://cloudinary.com/)
+- **Link scraping**: link scraping using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
+- **Environment variables**: using [dotenv](https://github.com/motdotla/dotenv)
+- **Security**: set security HTTP headers using [helmet](https://helmetjs.github.io)
+- **Santizing**: sanitize request data against xss and query injection
+- **CORS**: Cross-Origin Resource-Sharing enabled using [cors](https://github.com/expressjs/cors)
+- **Compression**: gzip compression with [compression](https://github.com/expressjs/compression)
+
+## Commands
+
+Running locally:
+
+```bash
+npm i
+npm start
+```
+
+## Environment Variables
+
+The environment variables can be found and modified in the `.env` file. They come with these default values:
+
+```bash
+# Port number
+PORT=3000
+
+# URL of the Mongo DB
+MONGODB_URL=mongodb://localhost:27017/editorial-interface
+
+```
+
+## Project Structure
+
+```
+backend\
+ |--config\         # Environment variables and configuration related things
+ |--controllers\    # Route controllers (controller layer)
+ |--middlewares\    # Centralized Error handling and validation middlewares
+ |--models\         # Mongoose models (data layer)
+ |--routes\         # Routes
+ |--uploads\        # Uploaded images
+ |--server.js        # App entry point
+```
+
+## API Documentation
+
+Server will start running on `http://localhost:3001/`.
+
+### API Endpoints
+
+List of available routes:
+
+**Auth routes**:\
+`GET /api/v1/blogs/` - getAllBlogs\
+`POST /api/v1/blogs/` - createBlog\
+`GET /api/v1/blogs/:blogId` - getBlogDetails\
+`DELETE /api/v1/blogs/:blogId` - deleteBlog\
+`POST /api/v1/blogs/:blogId/publish` - toogleBlog\
+
+**Post routes**:\
+`POST /api/v1/posts/:blogId` - createPost\
+`POST /api/v1/posts/:postId` - updatePost\
+`DELETE /api/v1/posts/:postId` - deletePost\
+
+## Error Handling
+
+The app has a centralized error handling mechanism.
+
+Controllers should try to catch the errors and forward them to the error handling middleware (by calling `next(error)`).
+```
+
+The error handling middleware sends an error response, which has the following format:
+
+```json
+{
+  "code": 404,
+  "message": "Not found"
+}
+
+```
+
+## Validation
+
+Request data is validated using custom validation in middleware folder.
+
+```javascript
+const express = require('express');
+const router = express.Router();
+const blogController = require('../controllers/blogController');
+const { validateObjectId, validateRequestBody } = require('../middlewares/validationMiddleware');
+
+router.route('/')
+  .get(blogController.getAllBlogs)
+  .post(validateRequestBody(['name']), blogController.createBlog);
+
+router.route('/:blogId')
+  .get(validateObjectId('blogId'), blogController.getBlogDetails)
+  .delete(validateObjectId('blogId'), blogController.deleteBlog);
+```
+
+## Custom Mongoose Plugins
+
+The app also contains 2 custom mongoose plugins that you can attach to any mongoose model schema. You can find the plugins in `/models/plugins`.
+
+```javascript
+const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
+
+const blogSchema = new mongoose.Schema(
+  {
+    /* schema definition here */
+  },
+  { timestamps: true }
+);
+
+blogSchema.plugin(toJSON);
+blogSchema.plugin(paginate);
+```
+
+### toJSON
+
+The toJSON plugin applies the following changes in the toJSON transform call:
+
+- removes \_\_v, createdAt, updatedAt, and any schema path that has private: true
+- replaces \_id with id
+
+### paginate
+
+The paginate plugin adds the `paginate` static method to the mongoose schema.
+
+## Contributors
+- [Deepak Panchal](https://github.com/deepak-panchal27)
+
+Feel free to explore the codebase and contribute to make this Editorial Interface even better!

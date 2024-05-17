@@ -1,0 +1,12 @@
+.container {
+  margin-top: 20px;
+}
+
+.blog-input {
+  flex: 1;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
