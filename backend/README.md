@@ -112,17 +112,18 @@ Server will start running on `http://localhost:3001/`.
 
 List of available routes:
 
-**Auth routes**:\
-`GET /api/v1/blogs/` - getAllBlogs\
-`POST /api/v1/blogs/` - createBlog\
-`GET /api/v1/blogs/:blogId` - getBlogDetails\
-`DELETE /api/v1/blogs/:blogId` - deleteBlog\
-`POST /api/v1/blogs/:blogId/publish` - toogleBlog\
+**Blog routes**:\
+`GET /api/v1/blogs/` - getAllBlogs
+`POST /api/v1/blogs/` - createBlog
+`GET /api/v1/blogs/:blogId` - getBlogDetails
+`DELETE /api/v1/blogs/:blogId` - deleteBlog
+`POST /api/v1/blogs/:blogId/publish` - toogleBlog
+`POST /api/v1/blogs/published` - getPublishedBlogs
 
 **Post routes**:\
-`POST /api/v1/posts/:blogId` - createPost\
-`POST /api/v1/posts/:postId` - updatePost\
-`DELETE /api/v1/posts/:postId` - deletePost\
+`POST /api/v1/posts/:blogId` - createPost
+`POST /api/v1/posts/:postId` - updatePost
+`DELETE /api/v1/posts/:postId` - deletePost
 
 ## Error Handling
 
