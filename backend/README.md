@@ -134,12 +134,11 @@ Controllers should try to catch the errors and forward them to the error handlin
 
 The error handling middleware sends an error response, which has the following format:
 
-```
+```json
 {
   "code": 404,
   "message": "Not found"
 }
-
 ```
 
 ## Validation
