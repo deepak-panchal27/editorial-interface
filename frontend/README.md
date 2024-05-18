@@ -1,18 +1,59 @@
+# Editorial Interface
+
+Welcome to the Editorial Interface project! This repository contains frontend applications for managing editorial content.
+
+## Frontend
+
+The frontend is built using React.js and Material-UI. It provides a user-friendly interface for creating, editing, and managing editorial content.
+
+### Technologies Used
+- React.js
+- Material-UI
+- Fetch (for API requests)
+
+### Build Tools
+- **Webpack**: A powerful module bundler for JavaScript applications, used to compile and bundle the React application.
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
+### Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/deepak-panchal27/editorial-interface.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd frontend
+    ```
+
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+To build the project in development mode, run:
+```bash
+npm run build:dev
+```
+
+To start the project in development mode, run:
+```bash
+npm run serve:dev
+
+#This will build the project for development using webpack and serve the project for development.
+```
+
+### Accessing the Application
+Once the frontend is running, you can access the application at [http://localhost:3002](http://localhost:3002)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 

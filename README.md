@@ -11,12 +11,17 @@ The backend is built using Node.js, Express.js, and MongoDB. It provides RESTful
 - Express.js
 - MongoDB
 - Mongoose
-- Axios (for external API requests)
-- Helmet (for security headers)
-- Multer (for file uploads)
-- Express Mongo Sanitize (for sanitizing MongoDB queries)
-- Cors (for Cross-Origin Resource Sharing)
-- Dotenv (for environment variables)
+- Multer
+- Cloudinary
+- Axios
+- Cheerio
+- Compression
+- CORS
+- Dotenv
+- Express-mongo-sanitize
+- Helmet
+- Multer
+- XSS-clean
 
 ## Frontend
 
@@ -27,13 +32,46 @@ The frontend is built using React.js and Material-UI. It provides a user-friendl
 - Material-UI
 - Fetch (for API requests)
 
+### Build Tools
+- **Webpack**: A powerful module bundler for JavaScript applications, used to compile and bundle the React application.
+
+## Getting Started
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
 ### Installation
-1. Navigate to the `editorial-interface` directory.
-2. Run `npm install` to install dependencies.
-3. Run `npm start` to start the backend and frontend development server.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/deepak-panchal27/editorial-interface.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd editorial-interface
+    ```
+
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Application
+
+To start the development server, run:
+```bash
+npm start
+
+#this will start both backend and frontend
+```
 
 ### Accessing the Application
-Once both the backend and frontend are running, you can access the application at [http://localhost:3002](http://localhost:3002).
+Once both the backend and frontend are running, you can access the application at 
+Backend - [http://localhost:3001](http://localhost:3001)
+Frontend - [http://localhost:3002](http://localhost:3002)
 
 ### Folder Structure
 - `backend`: Contains the backend Node.js application files.
