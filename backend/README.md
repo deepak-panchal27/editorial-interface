@@ -113,8 +113,8 @@ Server will start running on `http://localhost:3001/`.
 List of available routes:
 
 **Blog routes**:\
-`GET /api/v1/blogs/` - getAllBlogs\
-`POST /api/v1/blogs/` - createBlog\
+`GET /api/v1/blogs` - getAllBlogs\
+`POST /api/v1/blogs` - createBlog\
 `GET /api/v1/blogs/:blogId` - getBlogDetails\
 `DELETE /api/v1/blogs/:blogId` - deleteBlog\
 `POST /api/v1/blogs/:blogId/publish` - toogleBlog\
