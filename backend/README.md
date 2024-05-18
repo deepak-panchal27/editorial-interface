@@ -9,6 +9,7 @@ This project implements a RESTful API using Node.js, Express, and MongoDB for ma
 - MongoDB
 - Mongoose
 - Multer
+- Cloudinary
 - Axios
 - Cheerio
 - Compression
@@ -56,14 +57,15 @@ cp .env.example .env
 ## Features
 
 - **NoSQL database**: [MongoDB](https://www.mongodb.com) object data modeling using [Mongoose](https://mongoosejs.com)
-- **Validation**: request data validation
-- **Error handling**: centralized error handling mechanism
-- **DB connection first and gracefull shutdown**: first mongoDB is connected and then express app is started. Also implemented gracefull shutdown of express app
-- **Image uploading**: image is uploaded to [Cloudinary](https://cloudinary.com/)
-- **Link scraping**: link scraping using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
+- **Validation**: Request data validation
+- **Error handling**: Centralized error handling mechanism
+- **DB connection first and gracefull shutdown**: First MongoDB is connected and then Express App is started. Also implemented gracefull shutdown of Express App.
+- **Image uploading**: Image is uploaded to [Cloudinary](https://cloudinary.com/) and its path is saved in MongoDB.
+- **Link scraping**: Link scraping using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
+- **Process management**: advanced production process management using [PM2](https://pm2.keymetrics.io)
 - **Environment variables**: using [dotenv](https://github.com/motdotla/dotenv)
-- **Security**: set security HTTP headers using [helmet](https://helmetjs.github.io)
-- **Santizing**: sanitize request data against xss and query injection
+- **Security**: Set security HTTP headers using [helmet](https://helmetjs.github.io)
+- **Santizing**: Sanitize request data against xss and query injection
 - **CORS**: Cross-Origin Resource-Sharing enabled using [cors](https://github.com/expressjs/cors)
 - **Compression**: gzip compression with [compression](https://github.com/expressjs/compression)
 

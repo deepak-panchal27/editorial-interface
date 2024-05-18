@@ -6,11 +6,18 @@ const mongoSanitize = require('express-mongo-sanitize');
 const compression = require('compression');
 const cors = require('cors');
 const errorHandler = require('./middlewares/errorHandler');
+const morgan = require('./config/morgan');
+const logger = require('./config/logger');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URL;
+
+if (process.env.NODE_ENV !== 'development') {
+  app.use(morgan.successHandler);
+  app.use(morgan.errorHandler);
+}
 
 // Security middleware
 app.use(helmet());
@@ -30,19 +37,20 @@ app.options('*', cors());
 
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB');
+    logger.info('Connected to MongoDB');
     server = app.listen(PORT, () => {
-      console.log(`Listening to port ${PORT}`);
+      logger.info(`Listening to port ${PORT}`);
     });
   })
   .catch(err => {
-    console.error('MongoDB connection error:', err);
+    logger.error('MongoDB connection error:', err);
     process.exit(1);
   });
 
 // Routes
 const routes = require('./config/routes');
 app.use('/api/v1', routes);
+
 
 app.use((req, res, next) => {
   const error = new Error('Not Found');
@@ -56,9 +64,9 @@ app.use(errorHandler);
 const exitHandler = () => {
   if (server) {
     server.close(() => {
-      console.log('Server closed');
+      logger.info('Server closed');
       mongoose.connection.close(() => {
-        console.log('MongoDB connection closed');
+        logger.info('MongoDB connection closed');
       });
       process.exit(1);
     });
@@ -68,7 +76,7 @@ const exitHandler = () => {
 };
 
 const unexpectedErrorHandler = (error) => {
-  console.error('Unexpected error:', error);
+  logger.error('Unexpected error:', error);
   exitHandler();
 };
 
@@ -76,7 +84,7 @@ process.on('uncaughtException', unexpectedErrorHandler);
 process.on('unhandledRejection', unexpectedErrorHandler);
 
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received');
+  logger.info('SIGTERM received');
   if (server) {
     server.close();
   }

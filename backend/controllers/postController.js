@@ -2,7 +2,7 @@ const Post = require('../models/Post');
 const Blog = require('../models/Blog');
 const axios = require('axios');
 const cheerio = require('cheerio');
-const cloudinaryUtils = require('../utils/cloudinaryUtils');
+const cloudinaryUtils = require('../services/cloudinaryService');
 
 const determineSocialMediaType = (embedCode) => {
   if (embedCode.includes('facebook.com')) {
