@@ -75,6 +75,7 @@ Backend - [http://localhost:3001](http://localhost:3001) and Frontend - [http://
 ### Folder Structure
 - `backend`: Contains the backend Node.js application files.
 - `frontend`: Contains the frontend React.js application files.
+- `package.json`: To run both the application concurrently.
 - `README.md`: Project documentation.
 
 ```bash
