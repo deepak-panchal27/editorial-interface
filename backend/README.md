@@ -1,4 +1,4 @@
-# Editorial Interface Backend RESTful API
+# Editorial Interface - Backend RESTful API
 
 ## Description
 This project implements a RESTful API using Node.js, Express, and MongoDB for managing articles in an editorial interface.

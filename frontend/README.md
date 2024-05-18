@@ -1,4 +1,4 @@
-# Editorial Interface
+# Editorial Interface - Frontend
 
 Welcome to the Editorial Interface project! This repository contains frontend applications for managing editorial content.
 
