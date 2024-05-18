@@ -130,7 +130,6 @@ List of available routes:
 The app has a centralized error handling mechanism.
 
 Controllers should try to catch the errors and forward them to the error handling middleware (by calling `next(error)`).
-```
 
 The error handling middleware sends an error response, which has the following format:
 
