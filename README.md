@@ -70,8 +70,7 @@ npm start
 
 ### Accessing the Application
 Once both the backend and frontend are running, you can access the application at 
-Backend - [http://localhost:3001](http://localhost:3001)\
-Frontend - [http://localhost:3002](http://localhost:3002)
+Backend - [http://localhost:3001](http://localhost:3001) and Frontend - [http://localhost:3002](http://localhost:3002)
 
 ### Folder Structure
 - `backend`: Contains the backend Node.js application files.
