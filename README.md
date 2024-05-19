@@ -4,7 +4,11 @@ Welcome to the Editorial Interface project! This repository contains both the ba
 
 ## Backend
 
-The backend is built using Node.js, Express.js, and MongoDB. It provides RESTful API endpoints for managing blogs and posts for editors.
+The backend is built using Node.js, Express.js, and MongoDB. It provides RESTful API endpoints for managing blogs and posts for editors, along with real-time communication capabilities using Socket.IO.
+
+## Socket.IO Integration
+
+Socket.IO is used for real-time communication in this project. It allows clients to receive instant updates for new posts and edits made by other users.
 
 ### Technologies Used
 - Node.js

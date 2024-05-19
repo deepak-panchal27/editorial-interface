@@ -1,7 +1,7 @@
 # Editorial Interface - Backend RESTful API
 
 ## Description
-This project implements a RESTful API using Node.js, Express, and MongoDB for managing articles in an editorial interface.
+This project is a backend built using Node.js, Express.js, and MongoDB. It provides RESTful API endpoints for managing blogs and posts for editors, along with real-time communication capabilities using Socket.IO.
 
 ## Technologies Used
 - Node.js
@@ -61,7 +61,7 @@ cp .env.example .env
 - **Validation**: Request data validation
 - **Error handling**: Centralized error handling mechanism
 - **DB connection first and gracefull shutdown**: First MongoDB is connected and then Express App is started. Also implemented gracefull shutdown of Express App.
-- **Real-Time updates**: Handling real-time updates using [Socket.io](https://github.com/socketio/socket.io)
+- **Real-Time updates**: [Socket.IO](https://github.com/socketio/socket.io) is used for real-time communication in this project. It allows clients to receive instant updates for new posts and edits made by other users.
 - **Image uploading**: Image is uploaded to [Cloudinary](https://cloudinary.com/) and its path is saved in MongoDB.
 - **Link scraping**: Link scraping using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
 - **Process management**: advanced production process management using [PM2](https://pm2.keymetrics.io)
