@@ -71,3 +71,7 @@ Once the frontend is running, you can access the application at [http://localhos
 - [Deepak Panchal](https://github.com/deepak-panchal27)
 
 Feel free to explore the codebase and contribute to make this Editorial Interface even better!
+
+## Acknowledgements
+
+- Special thanks to the developers of React, Material-UI, and React Router.
