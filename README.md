@@ -46,7 +46,7 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-Make sure you have Node.js and npm installed on your machine.
+Make sure you have Node.js and MongoDB installed on your machine. Start the new MongoDB connection on mongodb://localhost:27017.
 
 ### Installation
 1. Clone the repository:
