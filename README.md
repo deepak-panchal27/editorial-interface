@@ -116,3 +116,7 @@ editorial-interface
 - [Deepak Panchal](https://github.com/deepak-panchal27)
 
 Feel free to explore the codebase and contribute to make this Editorial Interface even better!
+
+## Acknowledgements
+
+- Special thanks to the developers of Node.js, Express,js, MongoDB, Socket.IO, React, Material-UI, and React Router.
