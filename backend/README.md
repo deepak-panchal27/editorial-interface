@@ -9,6 +9,7 @@ This project implements a RESTful API using Node.js, Express, and MongoDB for ma
 - MongoDB
 - Mongoose
 - Multer
+- Socket.io
 - Cloudinary
 - Axios
 - Cheerio
@@ -60,6 +61,7 @@ cp .env.example .env
 - **Validation**: Request data validation
 - **Error handling**: Centralized error handling mechanism
 - **DB connection first and gracefull shutdown**: First MongoDB is connected and then Express App is started. Also implemented gracefull shutdown of Express App.
+- **Real-Time updates**: Handling real-time updates using [Socket.io](https://github.com/socketio/socket.io)
 - **Image uploading**: Image is uploaded to [Cloudinary](https://cloudinary.com/) and its path is saved in MongoDB.
 - **Link scraping**: Link scraping using [Axios](https://github.com/axios/axios) and [Cheerio](https://github.com/cheeriojs/cheerio)
 - **Process management**: advanced production process management using [PM2](https://pm2.keymetrics.io)

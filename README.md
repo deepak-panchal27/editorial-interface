@@ -12,6 +12,7 @@ The backend is built using Node.js, Express.js, and MongoDB. It provides RESTful
 - MongoDB
 - Mongoose
 - Multer
+- Socket.io
 - Cloudinary
 - Axios
 - Cheerio
