@@ -58,6 +58,9 @@ const createPost = async (req, res, next) => {
     blog.posts.push(newPost._id);
     await blog.save();
 
+    const io = req.app.get('io');
+    io.emit('newPost', newPost);
+
     res.status(201).json({ status: 'success', message: 'Post created successfully!', data: newPost });
   } catch (err) {
     next(err);
@@ -89,6 +92,10 @@ const editPost = async (req, res, next) => {
     });
 
     const updatedPost = await post.save();
+
+    const io = req.app.get('io');
+    io.emit('updatedPost', updatedPost);
+
     res.json({ status: 'success', message: 'Post updated successfully!', data: updatedPost });
   } catch (err) {
     next(err);
@@ -100,6 +107,10 @@ const deletePost = async (req, res, next) => {
   try {
     const { postId } = req.params;
     await Post.findByIdAndDelete(postId);
+
+    const io = req.app.get('io');
+    io.emit('deletedPost', postId);
+
     res.status(200).json({ status: 'success', message: 'Post deleted successfully!' });
   } catch (err) {
     next(err);

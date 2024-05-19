@@ -1,7 +1,7 @@
 const Blog = require('../models/Blog');
 
 // Get all blogs
-const getAllBlogs = async (req, res) => {
+const getAllBlogs = async (req, res, next) => {
   try {
     const { page = 1, limit = 10 } = req.query;
 
@@ -19,7 +19,7 @@ const getAllBlogs = async (req, res) => {
 };
 
 // Get all published blogs
-const getPublishedBlogs = async (req, res) => {
+const getPublishedBlogs = async (req, res, next) => {
   try {
     const { page = 1, limit = 10 } = req.query;
 
@@ -37,7 +37,7 @@ const getPublishedBlogs = async (req, res) => {
 };
 
 // Create a new blog
-const createBlog = async (req, res) => {
+const createBlog = async (req, res, next) => {
   const { name } = req.body;
 
   try {
@@ -50,7 +50,7 @@ const createBlog = async (req, res) => {
 };
 
 // Delete a blog
-const deleteBlog = async (req, res) => {
+const deleteBlog = async (req, res, next) => {
   const { blogId } = req.params;
 
   try {
@@ -61,13 +61,16 @@ const deleteBlog = async (req, res) => {
 
     await Blog.findByIdAndDelete(blogId);
     res.status(200).json({ status: 'success', message: 'Blog deleted successfully!' });
+
+    const io = req.app.get('io');
+    io.emit('deleteBlog', blogId);
   } catch (err) {
     next(err);
   }
 };
 
 // Toggle publish status of a blog
-const togglePublishBlog = async (req, res) => {
+const togglePublishBlog = async (req, res, next) => {
   const { blogId } = req.params;
 
   try {
@@ -79,13 +82,16 @@ const togglePublishBlog = async (req, res) => {
     blog.isPublished = !blog.isPublished;
     await blog.save();
     res.status(200).json({ status: 'success', message: 'Publish status toggled successfully!', data: blog });
+
+    const io = req.app.get('io');
+    io.emit('publishBlog', blog);
   } catch (err) {
     next(err);
   }
 };
 
 // Get details of a blog
-const getBlogDetails = async (req, res) => {
+const getBlogDetails = async (req, res, next) => {
   const { blogId } = req.params;
 
   try {

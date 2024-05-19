@@ -8,6 +8,8 @@ const cors = require('cors');
 const errorHandler = require('./middlewares/errorHandler');
 const morgan = require('./config/morgan');
 const logger = require('./config/logger');
+const http = require('http');
+const { Server } = require('socket.io');
 require('dotenv').config();
 
 const app = express();
@@ -38,7 +40,24 @@ app.options('*', cors());
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     logger.info('Connected to MongoDB');
-    server = app.listen(PORT, () => {
+    const server = http.createServer(app);
+    const io = new Server(server, {
+      cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+      }
+    });
+
+    io.on('connection', (socket) => {
+      console.log('New client connected');
+      socket.on('disconnect', () => {
+        console.log('Client disconnected');
+      });
+    });
+
+    app.set('io', io);
+
+    server.listen(PORT, () => {
       logger.info(`Listening to port ${PORT}`);
     });
   })
@@ -50,7 +69,6 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 // Routes
 const routes = require('./config/routes');
 app.use('/api/v1', routes);
-
 
 app.use((req, res, next) => {
   const error = new Error('Not Found');
