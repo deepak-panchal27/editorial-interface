@@ -118,8 +118,8 @@ const LiveBlogList = () => {
   };
 
   const renderPaginationButtons = () => {
-    if (isCreating) return null;
-
+    if (isCreating || pagination.totalPages === 0) return null;
+  
     return (
       <Box display="flex" alignItems="center" justifyContent="space-between" marginTop={2}>
         <Box>

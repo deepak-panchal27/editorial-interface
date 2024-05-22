@@ -39,6 +39,7 @@ The frontend is built using React.js and Material-UI. It provides a user-friendl
 
 ### Build Tools
 - **Webpack**: A powerful module bundler for JavaScript applications, used to compile and bundle the React application.
+- **Concurrently**: To run commands concurrently. First backend server is started, followed by the frontend.
 
 ## Getting Started
 
